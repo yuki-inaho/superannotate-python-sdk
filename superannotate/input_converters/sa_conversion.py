@@ -188,7 +188,8 @@ def from_vector_to_pixel(json_paths):
                         ] = list(hex_to_rgb(blue_colors[idx]))[::-1] + [255]
                     del instance['type']
                     del instance['points']
-                    del instance['pointLabels']
+                    if 'pointLabels' in instance.keys():
+                        del instance['pointLabels']
                     del instance['groupId']
                     instance['parts'] = [{'color': blue_colors[idx]}]
                     sa_loader.append(instance.copy())
@@ -211,7 +212,8 @@ def from_vector_to_pixel(json_paths):
                     idx += 1
                 del instance['type']
                 del instance['points']
-                del instance['pointLabels']
+                if 'pointLabels' in instance.keys():
+                    del instance['pointLabels']
                 del instance['groupId']
                 instance['parts'] = parts
                 sa_loader.append(instance.copy())
